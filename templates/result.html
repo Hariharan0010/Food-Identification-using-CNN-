@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Prediction Result</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction Result</h1>
+        {% if image_file %}
+            <img src="{{ url_for('static', filename='uploads/' + image_file) }}" alt="Uploaded Image" class="result-image">
+        {% endif %}
+        <h2>Food Name: {{ prediction }}</h2>
+        <h3>Estimated Calories: {{ calories }}</h3>
+        {% if nutrition %}
+            <h4>Nutritional Information:</h4>
+            <p>Protein: {{ nutrition.protein }} g</p>
+            <p>Carbohydrates: {{ nutrition.carbs }} g</p>
+            <p>Fats: {{ nutrition.fats }} g</p>
+            <p>Fiber: {{ nutrition.fiber }} g</p>
+        {% endif %}
+        <a href="/">Upload Another Image</a>
+    </div>
+</body>
+</html>
